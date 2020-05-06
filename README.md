@@ -1,24 +1,16 @@
-# README
+T2 Hackaton - Ruby on Rails
+---
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**Project Members**
+- Esther Csoke
+- Vincent Lieu
+- Wendy Doan
 
-Things you may want to cover:
+**Description**
 
-* Ruby version
+**Gems used**
 
-* System dependencies
+- [Bulma](https://github.com/joshuajansen/bulma-rails) - CSS framework
 
-* Configuration
+- [Devise](https://github.com/heartcombo/devise) - Authentication solution for Rails
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
