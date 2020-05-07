@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
   get "/", to: "pages#home", as: "root"
+  devise_for :users
+  #Room routes
+  resources :rooms
 end
