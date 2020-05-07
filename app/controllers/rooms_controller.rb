@@ -16,9 +16,6 @@ class RoomsController < ApplicationController
   end
 
   def create
-    # p "************"
-    # p params[:room][:title]
-    # p "************"
     @room = current_user.rooms.create(rooms_params)
      if @room.errors.any?
       render "new"
