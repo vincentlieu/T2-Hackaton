@@ -13,7 +13,7 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item"> Home </a>
+     <%= link_to "Home", root_path, class: "navbar-item" %>
     </div>
     <div class="navbar-end">
       <div class="navbar-item">
@@ -24,12 +24,8 @@
           <%= current_user.email %>
         </a>
         <div class="navbar-dropdown">
-          <a class="navbar-item">
-            <%= link_to "Edit", edit_user_registration_path %>
-          </a>
-          <a class="navbar-item">
-            <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-          </a>
+            <%= link_to "Edit", edit_user_registration_path, class: "navbar-item" %>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "navbar-item" %>
         </div>
       </div>
         <% else %>
