@@ -2,7 +2,7 @@ T2 Hackaton - Ruby on Rails
 ---
 
 **Project Members**
-- Esther Csoke
+- Esther Csóke
 - Vincent Lieu
 - Wendy Doan
 
