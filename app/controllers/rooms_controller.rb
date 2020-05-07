@@ -26,13 +26,21 @@ class RoomsController < ApplicationController
   end
 
   def edit
+    @room = current_user.rooms.find_by_id(params[:id])
+
+    if @room
+      render "edit"
+    else
+      redirect_to root_path
+    end
   end
 
   def update
-    @room = current_user.rooms.find_by_id(params[:id])
+  @room = current_user.rooms.find_by_id(params[:id])
+
     if @room
       @room.update(rooms_params)
-      if @listing.errors.any?
+      if @room.errors.any?
         render "edit"
       else
         redirect_to root_path
