@@ -1,4 +1,17 @@
 <h2>Rooms Index</h2>
-<div>
+<div class="index-container">
     <%= link_to "Create Room", new_room_path, class: "button is-primary" %>
+    <% if @rooms.present? %>
+      <nav class="nav flex-column">
+        <% for room in @rooms %>
+          <%= link_to room.title, room_path(room) %>
+        <% end %>
+      </nav>
+    <% else %>
+      <div class="text-muted">
+        There are no rooms
+      </div>
+    <% end %>
 </div>
+</div>
+

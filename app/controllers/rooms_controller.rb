@@ -6,6 +6,7 @@ class RoomsController < ApplicationController
   end
 
   def show
+    @room = Room.find(params[:id])
   end
 
   def new
@@ -13,24 +14,46 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @room = Room.create(params.require(:room).permit(:title))
+    # p "************"
+    # p params[:room][:title]
+    # p "************"
+    @room = current_user.rooms.create(rooms_params)
+     if @room.errors.any?
+      render "new"
+    else
+      redirect_to root_path
+    end
   end
 
   def edit
   end
 
   def update
-    @room = Room.update(params["id"], params.require(:room).permit(:title))
+    @room = current_user.rooms.find_by_id(params[:id])
+    if @room
+      @room.update(rooms_params)
+      if @listing.errors.any?
+        render "edit"
+      else
+        redirect_to root_path
+      end
+    else
+      redirect_to root_path
+    end
   end
 
   def destroy
     Room.find(params[:id]).destroy
   end
 
+end
   private
 
   def set_room
     id = params[:id]
     @room = Room.find(id)
   end
-end
+
+  def rooms_params()
+    params.require(:room).permit(:title)
+  end
