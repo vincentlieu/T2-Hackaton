@@ -20,7 +20,7 @@ class RoomsController < ApplicationController
     end
 
     def update
-        @room = Room.update(params["id"], params.require(:room).permit(:title)
+        @room = Room.update(params["id"], params.require(:room).permit(:title))
     end
 
     def destroy
