@@ -7,6 +7,8 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
+    @room_message = RoomMessage.new room: @room
+    @room_messages = @room.room_messages.includes(:user)
   end
 
   def new
@@ -26,13 +28,21 @@ class RoomsController < ApplicationController
   end
 
   def edit
+    @room = current_user.rooms.find_by_id(params[:id])
+
+    if @room
+      render "edit"
+    else
+      redirect_to root_path
+    end
   end
 
   def update
-    @room = current_user.rooms.find_by_id(params[:id])
+  @room = current_user.rooms.find_by_id(params[:id])
+
     if @room
       @room.update(rooms_params)
-      if @listing.errors.any?
+      if @room.errors.any?
         render "edit"
       else
         redirect_to root_path
