@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :username, uniqueness: true, presence: true
   has_many :rooms
+  has_one_attached :avatar
 end
