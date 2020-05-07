@@ -1,9 +1,16 @@
-<%= form_with model: room, local: true do |form| %>
+<% if room.errors.any? %>
+    <ul>
+        <% room.errors.full_messages.each do |error| %>
+            <li><%= error %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%= form_with model: room, local: true do |f| %>
 <div>
-    <%= form.label :title %>
-    <%= form.text_field :title, value: room.title %>
+    <%= f.label :title %>
+    <%= f.text_field :title, value: room.title %>
 </div>
-<div>
-<%= form.submit "Create a Room", class: "button is-primary" %>
-</div>
+<%= f.submit "Create a Room", class: "button is-primary" %>
+
 <% end %>
