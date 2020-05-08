@@ -1,17 +1,32 @@
 <section class="container">
     <div class="columns">
-    <%# Room Heading %>
-        <div class="column">
+    <% # Room Heading %>
+        <div class="column is-one-quarter">
             <h1> <%= @room.title %> </h1>
         </div>
-    <%# Room List %>
+    <% # Room List %>
 
-    <%# Message chat box %>
-    <%# Messages %>
-        <div class="column is-three-quarters">
-        Messages
-        </div>    
-    <%# Chat form with send button  %>
-     
-    </div>
+    <% # Message chat box %>
+    <% # Messages %>
+        <div class="column is-three-quarters" id="chat-box" style="background-color: aqua">
+        <% # Render chat messages %>
+            <% @room_messages.each do |room_message| %>
+            <div>
+                        <%= room_message.description %>
+                </div>
+                <small>
+                            <%= room_message.created_at %>
+                </small>
+            <% end %>
+                </div> 
+        </div>
+        <% # Message form %>
+        <%= form_with model: @room_message, local: true do |f| %>
+        <div class="input">
+            <%= f.hidden_field :room_id, value: @room.id %>
+            <%= f.label :message %>
+            <%= f.text_field :description, value: @room_message.description %>
+        </div>
+        <%= f.submit "Send", class: "button is-primary" %>
+        <% end %>
 </section>
