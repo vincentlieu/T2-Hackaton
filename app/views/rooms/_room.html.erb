@@ -1,13 +1,29 @@
-// Create room
-<div> 
-<%= link_to new_room_path, class: "button" do %>
-    Create a room
-    <% end %>
+<div class="columns is-mobile is-centered">
+    <div class="column is-centered">
+        <p class="bd-notification is-primary">
+            <%= link_to "Create Room", new_room_path, class: "button is-primary button is-large" %>
+            <br>
+        </p>
+    </div>
 </div>
-
-// List current rooms
-<div> 
-<>
+<div class="columns is-centered">
+    <table class="table is-striped is-hoverable " style="width: 900px;">
+        <tr class="th">
+            <th>Current Boards</th>
+        </tr>
+        <% if @rooms.present? %>
+        <nav class="flex-column is-four-fifths">
+            <% for room in @rooms %>
+            <tr>
+                <td class="post"><%= link_to room.title, room_path(room) %></td>
+            </tr>
+            <br>
+            <% end %>
+        </nav>
+        <% else %>
+        <div class="text-muted">
+            There are no rooms
+        </div>
+        <% end %>
 </div>
-
-// 
+</table>
